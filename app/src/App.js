@@ -89,13 +89,13 @@ const App = () => {
   };
 
   const askContractToMintNft = async () => {
-    setMinting(true);
-    setSuccessMessage("");
-
     try {
       const { ethereum } = window;
 
       if (ethereum) {
+        setMinting(true);
+        setSuccessMessage("");
+
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(
@@ -119,6 +119,7 @@ const App = () => {
       }
     } catch (error) {
       console.log(error);
+      setSuccessMessage("Failed to mint.");
     }
     setMinting(false);
   };
