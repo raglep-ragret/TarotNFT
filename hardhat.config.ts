@@ -2,6 +2,7 @@ import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "@nomiclabs/hardhat-ethers";
+import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-waffle";
 import dotenv from "dotenv";
 
@@ -26,6 +27,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 module.exports = {
   solidity: "0.8.0",
   defaultNetwork: "hardhat",
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_KEY,
+  },
   networks: {
     hardhat: {},
     localhost: {},
